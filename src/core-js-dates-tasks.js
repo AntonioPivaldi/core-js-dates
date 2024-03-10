@@ -201,11 +201,10 @@ function getCountWeekendsInMonth(m, y) {
  */
 function getWeekNumberByDate(date) {
   const start = new Date(date.getFullYear(), 0);
-  const end = getCountDaysOnPeriod(start, date);
-  let week = 0;
+  let week = 1;
 
-  for (let i = 0; i < end; i += 1) {
-    if (start.getDay() === 1) {
+  while (start < date) {
+    if (start.getDay() === 0) {
       week += 1;
     }
     start.setDate(start.getDate() + 1);
